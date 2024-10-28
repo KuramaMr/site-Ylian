@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>T-shirts - Athletix</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" onclick="window.location.href='../index.html'">ATHLETIX</div>
+            <ul class="nav-links">
+                <li><a href="tshirts.html">T-shirts</a></li>
+                <li><a href="chaussures.html">Chaussures</a></li>
+                <li><a href="shorts.html">Shorts</a></li>
+                <li><a href="chaussettes.html">Chaussettes</a></li>
+                <li><a href="accessoires.html">Accessoires</a></li>
+            </ul>
+            <div class="cart-icon">🛒</div>
+        </nav>
+    </header>
+
+    <main class="category-page">
+        <div class="category-header">
+            <h1>T-shirts & Tops</h1>
+            <div class="filters">
+                <select id="sort">
+                    <option value="price-asc">Prix croissant</option>
+                    <option value="price-desc">Prix décroissant</option>
+                    <option value="new">Nouveautés</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products">
+        </div>
+    </main>
+
+    <script src="../category.js"></script>
+</body>
+</html>
