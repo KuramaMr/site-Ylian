@@ -9,12 +9,18 @@
     <header>
         <nav class="navbar">
             <img class="logo" src="../assets/logo.png" alt="Athletix Logo" onclick="window.location.href='../index.html'">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="overlay"></div>
             <ul class="nav-links">
-                <li><a href="tshirts.html">T-shirts</a></li>
-                <li><a href="chaussures.html">Chaussures</a></li>
-                <li><a href="shorts.html">Shorts</a></li>
-                <li><a href="chaussettes.html">Chaussettes</a></li>
-                <li><a href="accessoires.html">Accessoires</a></li>
+                <li><a href="categories/tshirts.html">T-shirts</a></li>
+                <li><a href="categories/chaussures.html">Chaussures</a></li>
+                <li><a href="categories/shorts.html">Shorts</a></li>
+                <li><a href="categories/chaussettes.html">Chaussettes</a></li>
+                <li><a href="categories/accessoires.html">Accessoires</a></li>
             </ul>
             <div class="cart-icon">🛒</div>
         </nav>
@@ -35,7 +41,30 @@
         <div class="products-grid" id="products">
         </div>
     </main>
-
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.overlay');
+        
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
     <script src="../category.js"></script>
 </body>
 </html>
