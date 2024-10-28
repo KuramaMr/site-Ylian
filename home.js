@@ -9,14 +9,16 @@ async function displayCategoryPreview(categoryId) {
         const previewProducts = products.slice(0, PREVIEW_COUNT);
         
         previewProducts.forEach(product => {
-            const productCard = `
-                <div class="product-card">
-                    <img src="${product.image}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p class="price">${product.price} €</p>
-                </div>
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card loading';
+            
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.title}" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                <h3>${product.title}</h3>
+                <p class="price">${product.price} €</p>
             `;
-            container.innerHTML += productCard;
+            
+            container.appendChild(productCard);
         });
     } catch (error) {
         console.error(`Erreur lors du chargement de la catégorie ${categoryId}:`, error);
