@@ -34,14 +34,12 @@
             </div>
             <div class="products-grid" id="tshirts-products"></div>
         </section>
-        <section class="promo-slider">
+        <section class="promo-slider" id="slider1">
             <div class="slider-content">
-                <h2>Nouvelle Collection</h2>
-                <p>Découvrez nos dernières nouveautés sportswear</p>
-                <a href="categories/nouveautes.html" class="cta-button">Découvrir</a>
             </div>
             <div class="slider-navigation">
                 <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
                 <div class="slider-dot"></div>
             </div>
         </section>
@@ -60,7 +58,15 @@
             </div>
             <div class="products-grid" id="shorts-products"></div>
         </section>
-
+        <section class="promo-slider" id="slider2">
+            <div class="slider-content">
+            </div>
+            <div class="slider-navigation">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </section>
         <section class="category-preview">
             <div class="category-title">
                 <h2>Chaussettes</h2>
@@ -78,6 +84,49 @@
         </section>
 
     </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Nos magasins</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                    <li><a href="#">Développement durable</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Service Client</h3>
+                <ul>
+                    <li><a href="#">Contactez-nous</a></li>
+                    <li><a href="#">Livraison & Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Guide des tailles</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Informations Légales</h3>
+                <ul>
+                    <li><a href="#">Conditions générales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📱</a>
+                    <a href="#" title="Instagram">📸</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📺</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Athletix. Tous droits réservés.</p>
+        </div>
+    </footer>
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -99,6 +148,26 @@
                 if (navLinks.classList.contains('active')) {
                     toggleMenu();
                 }
+            });
+        });
+    </script>
+    <script>
+        // Initialiser les sliders après le chargement du DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            Object.keys(slidersConfig).forEach(sliderId => {
+                const slider = slidersConfig[sliderId];
+                
+                // Ajouter les événements de clic sur les points
+                slider.element.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        clearInterval(slider.interval);
+                        changeSlide(sliderId, index);
+                        slider.interval = setInterval(() => changeSlide(sliderId), 5000);
+                    });
+                });
+                
+                // Démarrer le slider automatique
+                slider.interval = setInterval(() => changeSlide(sliderId), 5000);
             });
         });
     </script>
